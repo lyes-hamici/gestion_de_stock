@@ -32,7 +32,7 @@ class PyMysql:
 
         #tableau
 
-        tableau = Treeview(fenetre, columns=('id', 'name','description' ,'price','quantity','id_category'))
+        tableau = Treeview(fenetre, columns=('id', 'name','description' ,'price','quantity','id_category','category'))
 
         tableau.heading('id', text='Id')
 
@@ -45,6 +45,8 @@ class PyMysql:
         tableau.heading('quantity', text='Quantity')
 
         tableau.heading('id_category', text='Id_category')
+
+        tableau.heading('category',text='category')
 
         tableau['show'] = 'headings' # sans ceci, il y avait une colonne vide à gauche qui a pour rôle d'afficher le paramètre "text" qui peut être spécifié lors du insert
 
@@ -63,12 +65,12 @@ class PyMysql:
         
 
         # lecture et affichage des données
-        if len(self.prod.read_produit()):
+        if len(self.prod.read_produit_with_categ()):
 
-            for enreg in self.prod.read_produit():
+            for enreg in self.prod.read_produit_with_categ():
 
 
-                tableau.insert('', 'end', iid=enreg[0], values=(enreg[0],enreg[1], enreg[2], enreg[3],enreg[4],enreg[5]))
+                tableau.insert('', 'end', iid=enreg[0], values=(enreg[0],enreg[1], enreg[2], enreg[3],enreg[4],enreg[5],enreg[6]))
 
         else:
 

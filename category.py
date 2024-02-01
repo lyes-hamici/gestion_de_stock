@@ -29,7 +29,7 @@ class Category:
         self.conn.commit()
 
 
-    def read_produit(self):
+    def read_categ(self):
         sql_query = "SELECT * FROM category"
         self.cursor.execute(sql_query)
         result = self.cursor.fetchall()

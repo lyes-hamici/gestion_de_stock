@@ -38,6 +38,13 @@ class Product:
         self.cursor.execute(sql_query)
         result = self.cursor.fetchall()
         return result
+    
+
+    def read_produit_with_categ(self):
+        sql_query = "SELECT product.id, product.name,product.description, product.price,product.quantity,product.id_category,category.name AS Category FROM product JOIN category ON product.id_category = category.id;"
+        self.cursor.execute(sql_query)
+        result = self.cursor.fetchall()
+        return result
 
     def update_product(self, name, description, price, quantity, id_category, id):
         sql_query = "UPDATE product SET name=%s, description=%s, price=%s, quantity=%s, id_category=%s WHERE id=%s"
